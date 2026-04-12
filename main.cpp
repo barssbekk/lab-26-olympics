@@ -49,7 +49,29 @@ int main() {
     list<string> dataList{data.begin(), data.end()};
     set<string> dataSet{data.begin(), data.end()};
 
-    long results[NUM_SIM][NUM_OPER][NUM_DS];
+    long results[NUM_SIM][NUM_OPER][NUM_DS]; // 3D array to store results
+
+    for (auto& result : results) {
+        // read
+        result[0][0] = inputVector(data);
+        result[0][1] = inputList(data);
+        result[0][2] = inputSet(data);
+
+        // sort
+        result[1][0] = sortVector(data);
+        result[1][1] = sortList(dataList);
+        result[1][2] = 0;
+
+        // insert
+        result[2][0] = insertVector(data);
+        result[2][1] = insertList(dataList);
+        result[2][2] = insertSet(dataSet);
+
+        // delete
+        result[3][0] = deleteVector(data);
+        result[3][1] = deleteList(dataList);
+        result[3][2] = deleteSet(dataSet);
+    }
 
     long vecRead {inputVector(data)};
     long listRead {inputList(data)};
