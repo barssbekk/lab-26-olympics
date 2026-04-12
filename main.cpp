@@ -13,6 +13,9 @@ using namespace std;
 using namespace chrono;
 
 const int NUM_RUNS{100}; // repeat tests so time is noticeable
+const int NUM_SIM{15};
+const int NUM_OPER{4};
+const int NUM_DS{3};
 
 long inputVector(const vector<string>& data);
 long inputList(const vector<string>& data);
@@ -45,6 +48,8 @@ int main() {
 
     list<string> dataList{data.begin(), data.end()};
     set<string> dataSet{data.begin(), data.end()};
+
+    long results[NUM_SIM][NUM_OPER][NUM_DS];
 
     long vecRead {inputVector(data)};
     long listRead {inputList(data)};
