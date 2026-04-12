@@ -12,7 +12,7 @@
 using namespace std;
 using namespace chrono;
 
-const int NUM_RUNS{100}; // repeat tests so time is noticeable
+const int NUM_RUNS{5}; // repeat tests so time is noticeable
 const int NUM_SIM{15};
 const int NUM_OPER{4};
 const int NUM_DS{3};
@@ -49,8 +49,9 @@ int main() {
     list<string> dataList{data.begin(), data.end()};
     set<string> dataSet{data.begin(), data.end()};
 
-    long results[NUM_SIM][NUM_OPER][NUM_DS]; // 3D array to store results
+    long results[NUM_SIM][NUM_OPER][NUM_DS]{}; // 3D array to store results
 
+    cout << "Running";
     for (auto& result : results) {
         // read
         result[0][0] = inputVector(data);
@@ -72,6 +73,8 @@ int main() {
         result[3][1] = deleteList(dataList);
         result[3][2] = deleteSet(dataSet);
     }
+    cout << "Test\n"
+         << results[0][0][0] << '\n';
 
     long vecRead {inputVector(data)};
     long listRead {inputList(data)};
