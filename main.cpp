@@ -12,7 +12,7 @@
 using namespace std;
 using namespace chrono;
 
-const int NUM_RUNS{5}; // repeat tests so time is noticeable
+const int NUM_RUNS{12}; // repeat tests so time is noticeable
 const int NUM_SIM{15};
 const int NUM_OPER{4};
 const int NUM_DS{3};
@@ -84,45 +84,40 @@ int main() {
         }
     }
 
-    long vecRead {inputVector(data)};
-    long listRead {inputList(data)};
-    long setRead {inputSet(data)};
+    long avg[NUM_OPER][NUM_DS]; // average times
 
-    long vecSort{sortVector(data)};
-    long listSort{sortList(dataList)};
+    for (int i{0}; i < NUM_OPER; ++i) {
+        for (int j{0}; j < NUM_DS; ++j) {
+            avg[i][j] = sum[i][j] / NUM_SIM;
+        }
+    }
 
-    long vecInsert{insertVector(data)};
-    long listInsert{insertList(dataList)};
-    long setInsert{insertSet(dataSet)};
-
-    long vecDelete{deleteVector(data)};
-    long listDelete{deleteList(dataList)};
-    long setDelete{deleteSet(dataSet)};
+    cout << "Number of simulations: " << NUM_SIM << "\n";
 
     cout << right << setw(10) << "Operation"
-         << setw(10) << "Vector"
-         << setw(10) << "List"
-         << setw(10) << "Set" << "\n";
+     << setw(10) << "Vector"
+     << setw(10) << "List"
+     << setw(10) << "Set" << "\n";
 
     cout << right << setw(10) << "Read"
-         << setw(10) << vecRead
-         << setw(10) << listRead
-         << setw(10) << setRead << "\n";
+         << setw(10) << avg[0][0]
+         << setw(10) << avg[0][1]
+         << setw(10) << avg[0][2] << "\n";
 
     cout << right << setw(10) << "Sort"
-         << setw(10) << vecSort
-         << setw(10) << listSort
+         << setw(10) << avg[1][0]
+         << setw(10) << avg[1][1]
          << setw(10) << -1 << "\n";
 
     cout << right << setw(10) << "Insert"
-         << setw(10) << vecInsert
-         << setw(10) << listInsert
-         << setw(10) << setInsert << "\n";
+         << setw(10) << avg[2][0]
+         << setw(10) << avg[2][1]
+         << setw(10) << avg[2][2] << "\n";
 
     cout << right << setw(10) << "Delete"
-         << setw(10) << vecDelete
-         << setw(10) << listDelete
-         << setw(10) << setDelete << "\n";
+         << setw(10) << avg[3][0]
+         << setw(10) << avg[3][1]
+         << setw(10) << avg[3][2] << "\n";
 
     return 0;
 }
