@@ -13,9 +13,9 @@ using namespace std;
 using namespace chrono;
 
 const int NUM_RUNS{12}; // repeat tests so time is noticeable
-const int NUM_SIM{15};
-const int NUM_OPER{4};
-const int NUM_DS{3};
+const int NUM_SIM{15}; // number of simulations
+const int NUM_OPER{4}; // read, sort, insert, delete
+const int NUM_DS{3}; // vector, list, set
 
 long inputVector(const vector<string>& data);
 long inputList(const vector<string>& data);
@@ -92,12 +92,13 @@ int main() {
         }
     }
 
+    // final output
     cout << "Number of simulations: " << NUM_SIM << "\n";
 
     cout << right << setw(10) << "Operation"
-     << setw(10) << "Vector"
-     << setw(10) << "List"
-     << setw(10) << "Set" << "\n";
+         << setw(10) << "Vector"
+         << setw(10) << "List"
+         << setw(10) << "Set" << "\n";
 
     cout << right << setw(10) << "Read"
          << setw(10) << avg[0][0]
